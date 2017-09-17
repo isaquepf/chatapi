@@ -1,0 +1,18 @@
+{
+  "name": "chatapi",
+  "scripts": {
+  },
+  "env": {
+    "MONGOLAB_URI": "mongodb://isaquepf:bella2014@ds141024.mlab.com:41024/chatapi"
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
