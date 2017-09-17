@@ -1,6 +1,6 @@
 var express = require('express');
 var app = module.exports.app = express();
-var http = require('http');
+var https = require('https');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -22,7 +22,7 @@ var api = require('./app');
 app.use('/api/v1/', api);
 app.use(express.static('public'));
 
-var server = http.createServer(app);
+var server = https.createServer(app);
 var Room = require('./app/rooms/model');
 var io = module.exports.socketIO = require('socket.io').listen(server);
 io.on('connection', function (socket) {
