@@ -6,8 +6,8 @@
   }
 
   // support staging
-  if (document.domain === 'chatcscapi.herokuapp.com') {
-    apiDomain = 'https://chatcscapi.herokuapp.com';
+  if (document.domain === 'express-js-chat-demo-complete.herokuapp.com') {
+    apiDomain = 'https://express-js-chat-demo-complete.herokuapp.com';
   }
 
   var chatClient = angular.module('simple-chat-client', []);
