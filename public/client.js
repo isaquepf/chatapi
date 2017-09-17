@@ -7,8 +7,8 @@
 
   // support staging
   if (document.domain === 'chatcscapi.herokuapp.com') {
-      apiDomain = 'https://chatcscapi.herokuapp.com/';
-    }
+    apiDomain = 'https://chatcscapi.herokuapp.com';
+  }
 
   var chatClient = angular.module('simple-chat-client', []);
   chatClient.constant('API_DOMAIN', apiDomain);
