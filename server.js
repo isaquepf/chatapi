@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./config');
-
+var cors = require('cors');
 mongoose.connect(config.mongoUri);
 app.use(bodyParser.json());
 app.use(passport.initialize());
@@ -21,6 +21,8 @@ app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
   next();
 });
+
+app.options('*', cors());
 
 var api = require('./app');
 app.use('/api/v1/', api);
