@@ -14,15 +14,20 @@ app.use(passport.initialize());
 
 var port = process.env.PORT || 8080;
 
+
+app.use(cors());
+
 //CORS
-
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
-  next();
-});
-
 app.options('*', cors());
+
+
+// app.all('/*', function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
+//   next();
+// });
+
+
 
 var api = require('./app');
 app.use('/api/v1/', api);
