@@ -14,8 +14,6 @@ app.use(passport.initialize());
 
 var port = process.env.PORT || 8080;
 
-
-
 //CORS
 
 app.all('/*', function(req, res, next) {
