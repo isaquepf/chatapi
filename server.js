@@ -1,6 +1,6 @@
 var express = require('express');
 var app = module.exports.app = express();
-var https = require('https');
+var http = require('http');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -9,6 +9,12 @@ var config = require('./config');
 mongoose.connect(config.mongoUri);
 app.use(bodyParser.json());
 app.use(passport.initialize());
+
+
+
+var port = process.env.PORT || 8080;
+
+
 
 //CORS
 
@@ -22,9 +28,11 @@ var api = require('./app');
 app.use('/api/v1/', api);
 app.use(express.static('public'));
 
-var server = https.createServer(app);
+var server = http.createServer(app);
 var Room = require('./app/rooms/model');
-var io = module.exports.socketIO = require('socket.io').listen(server);
+
+var io = module.exports.socketIO = require('socket.io').listen(app.listen(port));
+
 io.on('connection', function (socket) {
   console.log('User connected');
   socket.on('disconnect', function () {
@@ -65,8 +73,8 @@ io.on('connection', function (socket) {
   });
 });
 
-var port = config.port;
-server.listen(port);
+// var port = config.port;
+// server.listen(port);
 
 console.log('Mukodunk a ' + port + ' porton!');
 
