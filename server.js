@@ -15,7 +15,7 @@ app.use(passport.initialize());
 var port = process.env.PORT || 8080;
 
 
-app.use(cors());
+app.use(cors({credentials: false, origin: 'http://localhost:3000'}));
 
 //CORS
 app.options('*', cors());
